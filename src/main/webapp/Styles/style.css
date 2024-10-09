@@ -156,16 +156,16 @@ body {
     border:  solid 2px #0315af;
     outline:  none;
     border-radius:  20px;
-    font-size:  2rem;
+    font-size:  1rem;
     color:  #0315af;
 }
 
-.form i{
+/*.form i{
     color: #0315af;
     font-size: 2rem;
 }
 
-/* .registrarse {
+ .registrarse {
     background-color: red;
     outline: none;
     border: solid 2px var(--azul_oscuro);
