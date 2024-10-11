@@ -28,9 +28,9 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("usuario", nombre);
             response.sendRedirect("Vista/formCliente.jsp"); // Redirige a una página de bienvenida
         } else {
-            // Credenciales inválidas, redirigir al login con mensaje de error
+            // Credenciales inválidas, establecer mensaje de error
             request.setAttribute("error", "Credenciales incorrectas. Intenta de nuevo.");
-            request.getRequestDispatcher("Vista/ErrorCredenciales.jsp").forward(request, response); // Regresar al inicio
+            request.getRequestDispatcher("inicio.jsp").forward(request, response); // Regresa a la página de login
         }
     }
 }

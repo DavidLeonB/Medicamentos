@@ -41,6 +41,26 @@
                 font-size: 1rem;
                 color: #0315af;
             }
+
+
+
+
+            .msjError {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center; /* Centra el texto verticalmente */
+                border-radius: 20px;
+                text-align: center;
+                background-color: transparent;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                font-size:  1rem;
+                box-shadow:  7px 7px 7px rgba(255, 0, 0, 0.9);
+               border: solid 2px thin red;
+            }
+
+
         </style>
         <title>Formulario de registro e inicio de sesión</title>
     </head>
@@ -170,6 +190,9 @@
                     <p class="datos">Ingresa tus datos</p>
                     <form action="LoginServlet" method="POST" class="form">
                         <input type="hidden" name="accion" value="verificar" />
+
+
+
                         <i class="bx bxs-user"></i>
                         <input type="text" name="nombre" placeholder="Nombre" required />
                         <i class="bx bxs-lock-open-alt"></i>
@@ -180,8 +203,9 @@
                     </form>
                     <!-- Mensaje de error -->
                     <c:if test="${not empty error}">
-                        <div class="error-message">
+                        <div class="error-message" id="error-message">
                             <p>${error}</p>
+                            <button class="close-btn" onclick="closeMessage()">X</button>
                         </div>
                     </c:if>
                 </div>
@@ -225,6 +249,15 @@
                                 }
 
 
+            </script>
+            <script>
+                function closeMessage() {
+                    const errorMessage = document.getElementById('error-message');
+                    if (errorMessage) {
+                        errorMessage.style.display = 'none'; // Oculta el mensaje
+                        window.location.href = 'inicio.jsp'; // Redirige a inicio.jsp
+                    }
+                }
             </script>
     </body>
 </html>
