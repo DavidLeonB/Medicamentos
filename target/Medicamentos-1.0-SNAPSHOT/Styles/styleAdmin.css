@@ -24,29 +24,39 @@ body {
 }
 
 
-.ErrorCredenciales {
-    display:  flex;
-    border-radius:  20px;
-    box-shadow:  10px 10px 10px rgba(207, 12, 5, 0.84);
-    height:  60px;
-    max-width:  400px;
-    transition:  all 1s ease;
-    border:  solid thin #0315af;
-}
+.container-btn {
+                display:  flex;
+                padding: 15px;
+                align-content: center;
+                border-radius:  20px;
+                height:  80px;
+                max-width:  100%;
+                transition:  all 1s ease;
+                justify-content: space-around;
+                border:  solid thin #0315af;
+            }
 
 
-.msjError {
-    width:  100%;
-    display:  flex;
-    justify-content: center;
-    border-radius:  20px;
-    text-align:  center;
-    background-color:  #3fb7ee;
-    border-top-left-radius:  20px;
-    border-bottom-left-radius:  20px;
-    border:  solid thin red;
-    }
+            .btn {
+                width:  25%;
+                height:  50px;
+                display:  flex;
+                justify-content:center ;
+                align-content: center;
+                border-radius:  20px;
+                text-align:  center;
+                box-shadow:  10px 10px 10px rgba(207, 12, 5, 0.84);
+                background-color:  #3fb7ee;
+                border-top-left-radius:  20px;
+                border-bottom-left-radius:  20px;
+                border:  solid thin red;
+            }
 
-.msjError h2 {
-    color: red
-}
+            
+            .btn :hover {
+    background-color:  var(--gris2);
+    border:  var(--gris);
+    color:  var(--blanco);
+    font-size:  1.3rem;
+    box-shadow:  10px 10px 10px rgba(83, 87, 100, 0.4);
+            }
