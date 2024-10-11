@@ -34,6 +34,7 @@ body {
     border:  solid thin #0315af;
 }
 
+
 .information {
     width:  40%;
     display:  flex;
@@ -185,6 +186,12 @@ body {
     font-size:  1.3rem;
     box-shadow:  10px 10px 10px rgba(83, 87, 100, 0.4);
 }
+
+
+/*Pagina Error Credenciales*/
+
+
+
 
 /* RESPONSIVE FORM */
 

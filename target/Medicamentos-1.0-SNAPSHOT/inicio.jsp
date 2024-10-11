@@ -25,23 +25,23 @@
         <link rel="stylesheet" href="Styles/style.css" />
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
         <style>
-        
-        .form i {
-            color: #0315af;
-            font-size: 1.5rem;
-        }
 
-        select {
-            width: 92%;
-            margin-bottom: 5px;
-            padding: 10px;
-            border: solid 2px #0315af;
-            outline: none;
-            border-radius: 20px;
-            font-size: 1rem;
-            color: #0315af;
-        }
-    </style>
+            .form i {
+                color: #0315af;
+                font-size: 1.5rem;
+            }
+
+            select {
+                width: 92%;
+                margin-bottom: 5px;
+                padding: 10px;
+                border: solid 2px #0315af;
+                outline: none;
+                border-radius: 20px;
+                font-size: 1rem;
+                color: #0315af;
+            }
+        </style>
         <title>Formulario de registro e inicio de sesión</title>
     </head>
     <body>
@@ -64,7 +64,7 @@
                         <i class="bx bxl-instagram"></i>
                     </div> -->   
                     <p class="datos">Ingresa tus datos</p>
-                    <form action="" method="POST" class="form">
+                    <form action="LoadIpsServlet" method="POST" class="form">
                         <input type="hidden" name="action" value="registrar" />
                         <i class="bx bxs-user"></i>
                         <input type="text" name="txtnombre" placeholder="Nombre" required />
@@ -78,9 +78,9 @@
 
                         <!-- Combo Box para EPS -->
                         <select 
-                                
 
-                                name="id_eps" id="eps" onchange="loadIps(this.value)" required>
+
+                            name="id_eps" id="eps" onchange="loadIps(this.value)" required>
 
                             <option value="">Selecciona EPS</option>
                             <%
@@ -133,7 +133,7 @@
                         <i class='bx bxs-capsule'></i>
                         <select
 
-                             name="id_ips" id="ips" required>
+                            name="id_ips" id="ips" required>
                             <option value="">Selecciona IPS</option>
                         </select>
                         <i class='bx bxs-edit'></i>
@@ -168,7 +168,7 @@
                         <i class="bx bxl-instagram"></i>
                     </div>
                     <p class="datos">Ingresa tus datos</p>
-                    <form action="" method="POST" class="form">
+                    <form action="LoginServlet" method="POST" class="form">
                         <input type="hidden" name="accion" value="verificar" />
                         <i class="bx bxs-user"></i>
                         <input type="text" name="nombre" placeholder="Nombre" required />
@@ -176,31 +176,55 @@
                         <input type="password" name="contrasena" placeholder="Contraseña" required />
                         <i class='bx bx-log-in'></i>
                         <input class="registrarse" type="submit" value="Iniciar Sesión" />
-                    </form>
 
+                    </form>
+                    <!-- Mensaje de error -->
+                    <c:if test="${not empty error}">
+                        <div class="error-message">
+                            <p>${error}</p>
+                        </div>
+                    </c:if>
                 </div>
             </div>
 
             <script src="script.js"></script>
             <script>
-                                    function loadIps(epsId) {
-                                        const ipsSelect = document.getElementById('ips');
-                                        ipsSelect.innerHTML = '<option value="">Cargando...</option>'; // Muestra un mensaje de carga
+                                function loadIps(id_eps) {
+                                    const ipsSelect = document.getElementById('ips');
+                                    ipsSelect.innerHTML = '<option value="">Cargando...</option>'; // Mensaje de carga
 
-                                        // Llamada a un servlet para cargar las IPS según la EPS seleccionada
-                                        fetch(`loadIps?epsId=${epsId}`)
-                                                .then(response => response.json())
-                                                .then(data => {
-                                                    ipsSelect.innerHTML = '<option value="">Selecciona IPS</option>';
-                                                    data.forEach(ips => {
-                                                        ipsSelect.innerHTML += `<option value="${ips.id_ips}">${ips.nombre}</option>`;
+                                    fetch(`/loadIps?epsId=${id_eps}`)
+                                            .then(response => {
+                                                console.log("Respuesta del servidor:", response); // Para depurar
+
+                                                if (!response.ok) {
+                                                    throw new Error('Network response was not ok: ' + response.statusText);
+                                                }
+                                                return response.json();
+                                            })
+                                            .then(data => {
+                                                console.log("Datos recibidos:", data); // Para depurar
+                                                ipsSelect.innerHTML = '<option value="">Selecciona IPS</option>'; // Limpiar y agregar opción predeterminada
+
+                                                if (data && data.length) {
+                                                    data.forEach(item => {
+                                                        const option = document.createElement('option');
+                                                        option.value = item.id_ips; // Asegúrate de que esto sea correcto
+                                                        option.textContent = item.nombre; // Asegúrate de que esto sea correcto
+                                                        ipsSelect.appendChild(option);
                                                     });
-                                                })
-                                                .catch(err => {
-                                                    console.error(err);
-                                                    ipsSelect.innerHTML = '<option value="">Error al cargar IPS</option>';
-                                                });
-                                    }
+                                                } else {
+                                                    console.log('No data found for epsId:', id_eps);
+                                                    ipsSelect.innerHTML = '<option value="">No se encontraron IPS</option>'; // Opción si no hay datos
+                                                }
+                                            })
+                                            .catch(err => {
+                                                console.error("Error:", err); // Muestra más detalles del error
+                                                ipsSelect.innerHTML = '<option value="">Error al cargar IPS</option>';
+                                            });
+                                }
+
+
             </script>
     </body>
 </html>

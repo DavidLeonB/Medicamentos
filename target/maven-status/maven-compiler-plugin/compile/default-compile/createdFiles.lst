@@ -1,5 +1,4 @@
 Modelo\LoadIpsServlet.class
-.netbeans_automatic_build
-Modelo\IpsDAO.class
 Modelo\conexion.class
+Modelo\IpsDAO.class
 Modelo\Ips.class

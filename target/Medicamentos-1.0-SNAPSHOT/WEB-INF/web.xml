@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>LoadIpsServlet</servlet-name>
-        <servlet-class>Modelo.LoadIpsServlet</servlet-class> <!-- Asegúrate de que esta ruta sea correcta -->
+        <servlet-class>Modelo.LoadIpsServlet</servlet-class>
+        <!-- Asegúrate de que esta ruta sea correcta -->
     </servlet>
+   
     <servlet-mapping>
         <servlet-name>LoadIpsServlet</servlet-name>
-        <url-pattern>/loadIps</url-pattern> <!-- Cambiado a /loadIps -->
+        <url-pattern>/loadIps</url-pattern>
+        <!-- Cambiado a /loadIps -->
     </servlet-mapping>
-
+    
     <session-config>
         <session-timeout>
             30
