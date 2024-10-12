@@ -1,11 +1,5 @@
-
-<%@page import="java.sql.*"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-
-<%@page contentType="text/html" pageEncoding="UTF-8" language="java" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="javax.servlet.http.HttpSession"%>
 
 
 <!DOCTYPE html>
@@ -28,47 +22,87 @@
 
         <style>
 
-            .ErrorCredenciales {
+
+            :root {
+                --azul_oscuro: #0315af;
+                --azul-claro: #3fb7ee;
+                --negro: #111;
+                --gris: #555;
+                --gris2: #9191bd;
+                --blanco: #fff;
+                --aqua: #92def5;
+            }
+            * {
+                padding:  0;
+                margin:  0;
+                box-sizing:  border-box;
+                font-family:  "Montserrat", system-ui;
+                font-weight:  400;
+            }
+
+            body {
                 display:  flex;
-                border-radius:  20px;
-                box-shadow:  10px 10px 10px rgba(207, 12, 5, 0.84);
-                height:  60px;
-                max-width:  400px;
-                transition:  all 1s ease;
-                border:  solid thin #0315af;
+                align-items:  center;
+                justify-content:  center;
+                height:  100vh;
+                background-image:  url("../img/medical.jpg");
+                background-size:  cover;
+            }
+
+            @keyframes fontPulse {
+                0% {
+                    font-size:  1rem;
+                }
+                50% {
+                    font-size:  1.2rem;
+                }
+                100% {
+                    font-size:  1rem;
+                }
             }
 
 
-            .msjError {
-                width:  100%;
-                display:  flex;
+
+
+            .ErrorCredenciales {
+                display: flex;
                 justify-content: center;
-                border-radius:  20px;
-                text-align:  center;
-                background-color:  #3fb7ee;
-                border-top-left-radius:  20px;
-                border-bottom-left-radius:  20px;
-                border:  solid thin red;
+                align-items: center;
+                border-radius: 20px;                
+                height: 60px;
+                max-width: 500px;
+                transition: all 1s ease;
+                border: solid thin #0315af;
+                margin: 20px auto;
+                animation: fontPulse 4s infinite;
+            }
+
+            .msjError {
+                width: 100%;
+                text-align: center;
+                background-color: #3fb7ee;
+                border-radius: 20px;
+                padding: 10px;
             }
 
             .msjError h4 {
-                color: red
+                color: red;
+
+            }
+
+            .msjError p {
+                margin: 5px 0;
             }
         </style>
-
         <title>Mensaje de ERROR</title>
     </head>
     <body>        
         <div class="ErrorCredenciales">
             <div class="msjError">                
-                <h4>Usuario y/o contraseña erradas.</h4>
-                <br>
-                <br>
-                <h5>Vuelve a intentarlo.</h5>
-                
-                
-
+                <h4>Usuario no está logueado.</h4>
+                <p>Vuelve a intentarlo.</p>
+                <p><a href="/inicio.jsp">Inicia Sesión</a></p>
             </div>
-            
+        </div>
     </body>
 </html>

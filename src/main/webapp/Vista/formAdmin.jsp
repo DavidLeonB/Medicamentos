@@ -4,6 +4,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- CSS -->
+        <link rel="stylesheet" href="Styles/style.css" />
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
         <style>
 
@@ -15,6 +18,12 @@
                 --gris2: #9191bd;
                 --blanco: #fff;
                 --aqua: #92def5;
+            }
+            
+            body {
+                height:  100vh;
+                background-image:  url("../img/medical2.jpg");
+                background-size:  cover;
             }
 
             .container_btn {
@@ -40,15 +49,15 @@
                 align-content: center;
                 border-radius:  20px;
                 text-align:  center;
-                background-color:  #3fb7ee;
+                background-color:  transparent;
                 border-top-left-radius:  20px;
                 border-bottom-left-radius:  20px;
-                border:  solid thin red;
+                border:  solid 5px thin blue;
             }
 
             .container_btn input:hover {
                 background-color:  var(--aqua);
-                border:  var(--gris);
+                border:  var(--azul_oscuro);
                 color:  var(--azul_oscuro);
                 font-size:  1.3rem;
                 box-shadow:  10px 10px 10px rgba(83, 87, 100, 0.4);
@@ -56,7 +65,7 @@
 
 
         </style>
-        <title>Bienvenida</title>
+        <title>Bienvenida Admin</title>
     </head>
     <body>
         <%
@@ -64,34 +73,26 @@
             HttpSession userSession = request.getSession(false);
             String usuario = null;
 
-            if (session != null) {
-                usuario = (String) session.getAttribute("usuario");
-            }
+    if (session != null) {
+        usuario = (String) session.getAttribute("usuario");
+    }
 
-            // Comprobar si el usuario está logueado
-            if (usuario != null) {
-        %>
-        <h1>Bienvenido, <%= usuario%>!</h1>
+    // Comprobar si el usuario está logueado
+    if (usuario != null) {
+%>
+        <h1>Bienvenido, <%= usuario %>!</h1>
         <p>Estamos felices de que estés aquí.</p>
-        <%
-        } else {
-        %>
-        <h1>Error: Usuario no logueado</h1>
-        <p>Por favor, <a href="inicio.jsp">inicia sesión</a>.</p>
-        <%
-            }
-        %>
-
-
+        
         <div class="container_btn">
             <input class="Boton1" type="submit" value="Boton1" />
-
             <input class="Boton2" type="submit" value="Boton2" />
-
-
             <input class="Boton3" type="submit" value="Boton3" />
-
         </div>
-
-    </body>
+<%
+    } else {
+        // Redirigir a la página de inicio de sesión
+        response.sendRedirect("ErrorCredenciales.jsp");
+    }
+%>
+ </body>
 </html>
