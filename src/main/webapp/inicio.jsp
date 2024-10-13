@@ -60,15 +60,15 @@
                 border: solid 2px thin red;
             }
 
-         .widget-atencion {
+            .widget-atencion {
                 position: fixed;
                 bottom: 20px;
                 right: 20px;
-                z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */           
+                z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
                 background-color: #fff;
                 border-radius: 15px;
                 box-shadow:  5px 5px 5px #555;
-                padding: 10px;             
+                padding: 10px;
             }
 
             .globo::after {
@@ -233,14 +233,7 @@
                         <input class="registrarse" type="submit" value="Iniciar Sesión" />
 
                     </form>
-                    <!-- Widget de Atención -->
-                    <div class="widget-atencion">
-                        <h5>Asistente Virtual</h5>
-                        <div class="globo">
-                            <i class='bx bx-bot' title="Asistente Virtual" onclick="enviarSaludo('bot')"></i>
-                            <i class='bx bxl-whatsapp' title="Contáctanos" onclick="enviarSaludo('whatsapp')"></i>
-                        </div>
-                    </div>
+
 
                     <!-- Mensaje de error -->
                     <c:if test="${not empty error}">
@@ -309,5 +302,14 @@
                     }
                 }
             </script>
+            <!-- Widget de Atención -->
+            
+            </div>
+                                            <div class="widget-atencion">
+                <h5>Asistente Virtual</h5>
+                <div class="globo">
+                    <i class='bx bx-bot' title="Asistente Virtual" onclick="enviarSaludo('bot')"></i>
+                    <i class='bx bxl-whatsapp' title="Contáctanos" onclick="enviarSaludo('whatsapp')"></i>
+                </div>
     </body>
 </html>
