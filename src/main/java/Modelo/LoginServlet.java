@@ -17,7 +17,7 @@ public class LoginServlet extends HttpServlet {
         String nombre = request.getParameter("nombre");
         String contrasena = request.getParameter("contrasena");
 
-        if ("admin".equals(nombre) && "admin".equals(contrasena)) {
+        if ("Admin".equals(nombre) && "admin".equals(contrasena)) {
             // Usuario es admin, redirigir a la página de administración
             HttpSession session = request.getSession();
             session.setAttribute("usuario", nombre);

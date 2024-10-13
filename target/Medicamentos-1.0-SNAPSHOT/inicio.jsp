@@ -57,9 +57,41 @@
                 border-bottom-left-radius: 20px;
                 font-size:  1rem;
                 box-shadow:  7px 7px 7px rgba(255, 0, 0, 0.9);
-               border: solid 2px thin red;
+                border: solid 2px thin red;
             }
 
+         .widget-atencion {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */           
+                background-color: #fff;
+                border-radius: 15px;
+                box-shadow:  5px 5px 5px #555;
+                padding: 10px;             
+            }
+
+            .globo::after {
+                content: '';
+                position: absolute;
+                bottom: 100%; /* Ajusta la posición del triángulo */
+                left: 50%;
+                margin-left: -5px; /* Centra el triángulo */
+                border-width: 5px;
+                border-style: solid;
+                border-color: transparent transparent #fff transparent; /* Color del fondo del globo */
+            }
+
+            .globo i {
+                font-size: 30px;
+                color: #0315af;
+                margin: 5px 3px;
+                cursor: pointer; /* Cambiar el cursor para indicar que son interactivos */
+            }
+
+            .globo i:hover {
+                color: #0d47a1; /* Cambiar color al pasar el mouse */
+            }
 
         </style>
         <title>Formulario de registro e inicio de sesión</title>
@@ -184,7 +216,7 @@
                 <div class="form-information-childs">
                     <h2>Iniciar Sesión</h2>
                     <div class="icons">
-                        <i class="bx bxl-whatsapp"></i>
+                        <i class='bx bxl-facebook'></i>
                         <i class="bx bxl-instagram"></i>
                     </div>
                     <p class="datos">Ingresa tus datos</p>
@@ -201,6 +233,15 @@
                         <input class="registrarse" type="submit" value="Iniciar Sesión" />
 
                     </form>
+                    <!-- Widget de Atención -->
+                    <div class="widget-atencion">
+                        <h5>Asistente Virtual</h5>
+                        <div class="globo">
+                            <i class='bx bx-bot' title="Asistente Virtual" onclick="enviarSaludo('bot')"></i>
+                            <i class='bx bxl-whatsapp' title="Contáctanos" onclick="enviarSaludo('whatsapp')"></i>
+                        </div>
+                    </div>
+
                     <!-- Mensaje de error -->
                     <c:if test="${not empty error}">
                         <div class="error-message" id="error-message">
@@ -256,6 +297,15 @@
                     if (errorMessage) {
                         errorMessage.style.display = 'none'; // Oculta el mensaje
                         window.location.href = 'inicio.jsp'; // Redirige a inicio.jsp
+                    }
+                }
+            </script>
+            <script>
+                function enviarSaludo(icon) {
+                    if (icon === 'bot') {
+                        alert('¡Hola! Soy tu asistente virtual. ¿En qué puedo ayudarte?');
+                    } else if (icon === 'whatsapp') {
+                        alert('¡Hola! Puedes contactarnos a través de WhatsApp para más asistencia.');
                     }
                 }
             </script>

@@ -81,7 +81,7 @@
     if (usuario != null) {
 %>
         <h1>Bienvenido, <%= usuario %>!</h1>
-        <p>Estamos felices de que estés aquí.</p>
+        <p></p>
         
         <div class="container_btn">
             <input class="Boton1" type="submit" value="Boton1" />
