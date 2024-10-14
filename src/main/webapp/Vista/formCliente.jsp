@@ -43,7 +43,7 @@
                 max-width: 100%;
                 transition: all 1s ease;
                 justify-content: space-around;
-                border: solid thin #0315af;
+                border: 2px solid #0315af;
                 margin: 5px;
                 background-color: rgba(176,196,222,0.5);
             }
@@ -55,7 +55,7 @@
     justify-content: space-between;
     padding: 20px;
     border-radius: 20px;
-    border: #0315af solid 1px;
+    border: #0315af solid 2px;
     margin-bottom: 10px;
     background-color: rgba(176,196,222,0.5);
 }
@@ -73,7 +73,7 @@
     font-size: 1rem;
     border-radius: 20px;
     text-align: center;
-    border: solid thin #0315af;
+    border: 2px solid #0315af;
 }
 
             .container_perfil input {
@@ -93,7 +93,7 @@
                 text-align: center;
                 background-color: transparent;
                 border-radius: 20px;
-                border: solid thin yellow;
+                border: 2px solid yellow;
             }
 
           .acciones {
@@ -107,7 +107,17 @@
 .acciones input {
     width: 80%; /* Cambiar el ancho de los botones */
     margin: 10px 0; /* Espaciado vertical entre botones */
+   
 }
+
+.container_btn input,
+.saludo input,
+.actualizaciones input {
+    background-color: rgba(128, 128, 128, 0.6);
+    border: #0315af solid 2px;
+    }
+
+
             input {
                 width: 30%;
                 height: 60px;
